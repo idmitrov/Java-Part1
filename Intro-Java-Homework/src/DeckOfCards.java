@@ -1,5 +1,4 @@
 import java.io.FileOutputStream;
-
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -7,7 +6,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
 
 public class DeckOfCards {
 	public static void main(String[] args) {
@@ -24,14 +22,11 @@ public class DeckOfCards {
 			BaseFont font = BaseFont.createFont("arial.ttf", BaseFont.IDENTITY_H, true);
 			Font black = new Font(font,24f, 0, BaseColor.BLACK);
 			Font red = new Font(font, 24f, 0, BaseColor.RED);
-			
 			//PRINTING THE DEC
 			char color = ' ';
 			String card = "";
-			
 			//CARDS NUMBERS
 			for (int n = 2; n <= 14; n++) {
-				
 				switch (n){
 				case 11: card = "A"; break;
 				case 12: card = "J"; break;
@@ -53,8 +48,10 @@ public class DeckOfCards {
 					}
 				}
 			}
+			
 			pdfDoc.add(cardsBody);
 			pdfDoc.close();
+			
 		} catch (Exception e) {
 			System.err.println("Error");
 			System.out.println(e);
