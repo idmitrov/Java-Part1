@@ -18,10 +18,11 @@ public class DeckOfCards {
 			PdfPTable cardsBody = new PdfPTable(4);
 			cardsBody.setWidthPercentage(55);
 			cardsBody.getDefaultCell().setFixedHeight(110);
-			//FONT
+			cardsBody.getDefaultCell().setBackgroundColor(BaseColor.WHITE);
+			cardsBody.getDefaultCell().setBorderColor(BaseColor.GRAY);
 			BaseFont font = BaseFont.createFont("arial.ttf", BaseFont.IDENTITY_H, true);
-			Font black = new Font(font,24f, 0, BaseColor.BLACK);
-			Font red = new Font(font, 24f, 0, BaseColor.RED);
+			Font black = new Font(font,18f, 0, BaseColor.BLACK);
+			Font red = new Font(font, 18f, 0, BaseColor.RED);
 			//PRINTING THE DEC
 			char color = ' ';
 			String card = "";
@@ -32,12 +33,12 @@ public class DeckOfCards {
 				case 12: card = "J"; break;
 				case 13: card = "Q"; break;
 				case 14: card = "K"; break;
-				default: card = n + ""; break;
+				default: card = n + " "; break;
 				}
 				//CARDS MARK
 				for (int mark = 0; mark < 4; mark++){
 					switch (mark) {
-					case 0: color = '♠'; cardsBody.addCell(new Paragraph(card + color + "", black)); 
+					case 0: color = '♠'; cardsBody.addCell(new Paragraph(card + color + "", black));
 					break;
 					case 1: color = '♥'; cardsBody.addCell(new Paragraph(card + color + "", red)); 
 					break;
@@ -53,7 +54,6 @@ public class DeckOfCards {
 			pdfDoc.close();
 			
 		} catch (Exception e) {
-			System.err.println("Error");
 			System.out.println(e);
 		}
 	}
