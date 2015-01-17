@@ -1,4 +1,4 @@
-import java.io.FileOutputStream;
+﻿import java.io.FileOutputStream;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -10,49 +10,80 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class DeckOfCards {
 	public static void main(String[] args) {
 		try {
-			//CREATING PDF DOCUMENT
+			// CREATING PDF DOCUMENT
 			Document pdfDoc = new Document();
-			PdfWriter.getInstance(pdfDoc, new FileOutputStream("Cards.pdf"));
+			PdfWriter.getInstance(pdfDoc, new FileOutputStream(
+					"Playing-Cards-Deck.pdf"));
+			// OPENING THE PDF
 			pdfDoc.open();
-			//CREATING CARDS BODY
-			PdfPTable cardsBody = new PdfPTable(4);
-			cardsBody.setWidthPercentage(55);
-			cardsBody.getDefaultCell().setFixedHeight(110);
+			// CREATING CARDS BODY
+			PdfPTable cardsBody = new PdfPTable(13);
+			cardsBody.setWidthPercentage(113.4f);
+			cardsBody.getDefaultCell().setPaddingTop(-1);
+			cardsBody.getDefaultCell().setFixedHeight(82);
 			cardsBody.getDefaultCell().setBackgroundColor(BaseColor.WHITE);
-			cardsBody.getDefaultCell().setBorderColor(BaseColor.GRAY);
-			BaseFont font = BaseFont.createFont("arial.ttf", BaseFont.IDENTITY_H, true);
-			Font black = new Font(font,18f, 0, BaseColor.BLACK);
-			Font red = new Font(font, 18f, 0, BaseColor.RED);
-			//PRINTING THE DEC
-			char color = ' ';
-			String card = "";
-			//CARDS NUMBERS
-			for (int n = 2; n <= 14; n++) {
-				switch (n){
-				case 11: card = "A"; break;
-				case 12: card = "J"; break;
-				case 13: card = "Q"; break;
-				case 14: card = "K"; break;
-				default: card = n + " "; break;
+			cardsBody.getDefaultCell().setBorderWidth(0);
+			cardsBody.getDefaultCell().setBorderWidthTop(0.5f);
+			cardsBody.getDefaultCell().setBorderWidthLeft(0.5f);
+			cardsBody.getDefaultCell().setBorderColor(BaseColor.LIGHT_GRAY);
+			BaseFont fontFamily = BaseFont.createFont("./font/times.ttf",
+					BaseFont.IDENTITY_H, true);
+			Font blackColor = new Font(fontFamily, 12, 0, BaseColor.BLACK);
+			Font redColor = new Font(fontFamily, 12, 0, BaseColor.RED);
+			// LOOPING CARDS INTO DECK
+			char cardSign = ' ';
+			String cardValue = "";
+			Font color = null;
+			// CARD SIGN
+			for (int sign = 0; sign < 4; sign++) {
+				switch (sign) {
+				case 0:
+					cardSign = '♠';
+					color = blackColor;
+					break;
+				case 1:
+					cardSign = '♥';
+					color = redColor;
+					break;
+				case 2:
+					cardSign = '♦';
+					color = redColor;
+					break;
+				case 3:
+					cardSign = '♣';
+					color = blackColor;
+					cardsBody.getDefaultCell().setBorderWidthBottom(0.5f);
+					break;
+
 				}
-				//CARDS MARK
-				for (int mark = 0; mark < 4; mark++){
-					switch (mark) {
-					case 0: color = '♠'; cardsBody.addCell(new Paragraph(card + color + "", black));
-					break;
-					case 1: color = '♥'; cardsBody.addCell(new Paragraph(card + color + "", red)); 
-					break;
-					case 2: color = '♣'; cardsBody.addCell(new Paragraph(card + color + "", black)); 
-					break;
-					case 3: color = '♦'; cardsBody.addCell(new Paragraph(card + color + "", red));
-					break;
+				// CARD VALUE
+				for (int card = 2; card <= 14; card++) {
+					switch (card) {
+					case 11:
+						cardValue = "A";
+						break;
+					case 12:
+						cardValue = "J";
+						break;
+					case 13:
+						cardValue = "Q";
+						break;
+					case 14:
+						cardValue = "K";
+						cardsBody.getDefaultCell().setBorderWidthRight(0.5f);
+						break;
+					default:
+						cardValue = card + "";
+						cardsBody.getDefaultCell().setBorderWidthRight(0);
+						break;
 					}
+					cardsBody.addCell(new Paragraph(cardValue + cardSign + "",
+							color));
 				}
 			}
-			
+			// PRINT ALL CARDS AND CLOSE THE PDF
 			pdfDoc.add(cardsBody);
 			pdfDoc.close();
-			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
