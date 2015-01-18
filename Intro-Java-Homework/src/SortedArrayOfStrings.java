@@ -1,19 +1,25 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-
-public class SortedArrayOfStrings {
+public class SortOfArray {
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt();
-		String[] myStringArray = new String[n];
-		
-		for (int i = 0; i < n; i++) {
-			myStringArray[i] = new Scanner(System.in).nextLine();
+		//ARRAY LENGTH INPUT
+		System.out.print("Array length: ");
+		int arrLength = scan.nextInt();
+		scan.nextLine();
+		//INIT ARRAY
+		String[] words = new String[arrLength];
+		//FILL THE ARRAY
+		for (int i = 0; i < arrLength; i++) {
+			System.out.print("Type a string: ");
+			words[i] = scan.nextLine();
 		}
-
-		Arrays.sort(myStringArray);
-		for (String sentence : myStringArray) {
-			System.out.println(sentence);
+		//SORT AND PRINT THE ARRAY
+		Arrays.sort(words);
+		for (String word : words) {
+			System.out.println(word);
 		}
 	}
 }
