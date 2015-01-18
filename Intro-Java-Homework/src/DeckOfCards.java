@@ -55,9 +55,8 @@ public class DeckOfCards {
 						case 11: cardValue = "A"; break;
 						case 12: cardValue = "J"; break;
 						case 13: cardValue = "Q"; break;
-						case 14: cardValue = "K";
-								cardsBody.getDefaultCell()
-								.setBorderWidthRight(0.5f); break;
+						case 14: cardValue = "K"; cardsBody.getDefaultCell()
+													.setBorderWidthRight(0.5f); break;
 						default: cardValue = card + "";
 								cardsBody.getDefaultCell()
 								.setBorderWidthRight(0); break;
