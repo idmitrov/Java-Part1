@@ -11,7 +11,8 @@ public class PointsInsideFigure {
 		
 		System.out.print("Type 2 points: ");
 		double pointX = scan.nextDouble(),
-			 pointY = scan.nextDouble();
+		       pointY = scan.nextDouble();
+			 
 		//IS INSIDE OF THE LEFT PART OF THE FIGURE
 		boolean isInLeft = pointX >= 12.5 && pointX <= 17.5
 				&& pointY >= 8.5 && pointY <= 13.5,
