@@ -1,30 +1,35 @@
 import java.util.Locale;
 import java.util.Scanner;
 
+/*
+	Write a program to check whether a point is inside or outside of the figure below.
+	The point is given as a pair of floating-point numbers, separated by a space. 
+	Your program should print "Inside" or "Outside".
+
+ */
 public class PointsInsideFigure {
+	//RETURN IS INSIDE OR NOT METHOD
+	public static String isInside(double posX, double posY) {
+		boolean isInsideL = (posX >= 12.5 && posX <= 17.5) && (posY >= 8.5 && posY <= 13.5),
+				isInsideT = (posX >= 12.5 && posX <= 22.5) && (posY >= 6 && posY <= 8.5),
+				isInsideR = (posX >= 20 && posX <= 22.5) && (posY >= 8.5 && posY <= 13.5);
+		String result = isInsideL || isInsideR || isInsideT ? "Inside" : "Outside";
+		return result;
+	}
+	
 	public static void main(String[] args) {
-		//LOCALE
 		Locale.setDefault(Locale.ROOT);
-		//SCANNER INPUT
 		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Type 2 points: ");
-		double pointX = scan.nextDouble(),
-		       pointY = scan.nextDouble();
-			 
-		//IS INSIDE OF THE LEFT PART OF THE FIGURE
-		boolean isInLeft = pointX >= 12.5 && pointX <= 17.5
-				&& pointY >= 8.5 && pointY <= 13.5,
-				
-		//IS INSIDE OF THE TOP PART OF THE FIGURE
-				isInTop = pointX >= 12.5 && pointX <= 22.5
-					&& pointY >= 6.0 && pointY <= 8.5,
-						
-		//IS INSIDE OF THE TOP PART OF THE FIGURE
-				isInRight = pointX >= 20.0 && pointX <= 22.5
-					&& pointY >= 8.5 && pointY <= 13.5;
-						
-		System.out.println(isInLeft || isInTop || isInRight ? "Inside" : "Outside");
+		System.out.print("Type position X: ");
+		double posX = Double.parseDouble(input.nextLine());
+		
+		System.out.print("Type position Y: ");
+		double posY = Double.parseDouble(input.nextLine());
+		
+		System.out.println(isInside(posX, posY));
+		
+		
 	}
 }

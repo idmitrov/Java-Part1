@@ -1,36 +1,37 @@
 import java.util.Scanner;
 
+/*
+ 	Write a program that enters 3 points in the plane (as integer x and y coordinates),
+  	calculates and prints the area of the triangle composed by these 3 points. 
+  	Round the result to a whole number. In case the three points do not form a triangle, print "0" as result.
+ */
 public class TriangleArea {
+	
+	//CALCULATE TRIANGLE AREA BY GIVEN COORDS
+	public static int calculateArea(int aX, int aY, int bX, int bY, int cX, int cY) {
+		int area = Math.abs(aX * (bY - cY) + bX * (cY - aY) + cX * (aY - bY)) / 2;
+		return area;
+	}
+	
 	public static void main(String[] args) {
-		//SCANNER INPUT
 		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		
-		//SIDE A X:
-		System.out.print("SideA coord X: ");
-		int sideAX = Integer.parseInt(scan.nextLine());
-		//SIDE A Y:
-		System.out.print("SideA coord Y: ");
-		int sideAY = Integer.parseInt(scan.nextLine());
+		System.out.print("Type side a X:");
+		int aX = Integer.parseInt(input.nextLine());
+		System.out.print("Type side a Y:");
+		int aY = Integer.parseInt(input.nextLine());
 		
-		//SIDE B X:
-		System.out.print("SideB coord X: ");
-		int sideBX = Integer.parseInt(scan.nextLine());
-		//SIDE B Y:
-		System.out.print("SideB coord Y: ");
-		int sideBY = Integer.parseInt(scan.nextLine());
+		System.out.print("Type side b X:");
+		int bX = Integer.parseInt(input.nextLine());
+		System.out.print("Type side b Y:");
+		int bY = Integer.parseInt(input.nextLine());
 		
-		//SIDE C X:
-		System.out.print("SideC coord X: ");
-		int sideCX = Integer.parseInt(scan.nextLine());
-		//SIDE C Y:
-		System.out.print("SideC coord Y: ");
-		int sideCY = Integer.parseInt(scan.nextLine());
+		System.out.print("Type side c X:");
+		int cX = Integer.parseInt(input.nextLine());
+		System.out.print("Type side c Y:");
+		int cY = Integer.parseInt(input.nextLine());
 		
-		int area = Math.abs(sideAX * (sideBY - sideCY)
-				+ sideBX * (sideCY - sideAY) 
-				+ sideCX * (sideAY - sideBY)) / 2;
-		
-		System.out.println("Area = " + area);
+		System.out.println("Triangle area = " + calculateArea(aX, aY, bX, bY, cX, cY));
 	}
 }
