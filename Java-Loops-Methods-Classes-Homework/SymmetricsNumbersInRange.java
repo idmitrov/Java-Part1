@@ -17,7 +17,7 @@ public class SymmetricsNumbersInRange {
 			
 			for (int index = 0; index < (tempNum.length() + 1 ) / 2; index++) {
 				char leftSideDigit = tempNum.charAt(index),
-					 rightSideDigit = tempNum.charAt(tempNum.length() - index - 1);
+				     rightSideDigit = tempNum.charAt(tempNum.length() - index - 1);
 				if (leftSideDigit != rightSideDigit) {
 					isSymmetric = false;
 					break;
